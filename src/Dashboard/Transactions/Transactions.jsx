@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Trash2, Filter, TrendingUp, TrendingDown, Activity, Pencil, X } from 'lucide-react';
 import { Link } from 'react-router';
+import ExportTransactions from './ExportTransactions';
 
 const Transactions = () => {
     const { user } = useContext(AuthContext);
@@ -124,8 +125,10 @@ const Transactions = () => {
                         <p className="mt-1 text-sm text-base-content/60 dark:text-base-content/50">{transactions.length} total records</p>
                     </div>
 
-                    <div className="flex items-center gap-2 self-start sm:self-auto bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 rounded-xl px-3 py-2">
-                        <Filter size={15} className="text-base-content/40 dark:text-base-content/50 shrink-0" />
+                    <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+                        <ExportTransactions transactions={transactions} filter={filter} />
+                        <div className="flex items-center gap-2 bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 rounded-xl px-3 py-2">
+                            <Filter size={15} className="text-base-content/40 dark:text-base-content/50 shrink-0" />
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="bg-transparent text-sm font-medium focus:outline-none text-base-content dark:text-base-content/90 flex items-center gap-1">
                                 {filter === 'all' ? 'All Records' : filter.charAt(0).toUpperCase() + filter.slice(1)}
@@ -138,6 +141,7 @@ const Transactions = () => {
                                 <li><a onClick={() => { setFilter('income'); setCurrentPage(1); document.activeElement?.blur(); }}>Income</a></li>
                                 <li><a onClick={() => { setFilter('expense'); setCurrentPage(1); document.activeElement?.blur(); }}>Expense</a></li>
                             </ul>
+                        </div>
                         </div>
                     </div>
                 </div>
