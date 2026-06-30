@@ -13,6 +13,7 @@ import Hero from "../Pages/Home/Hero.jsx";
 import Profile from "../Pages/Profile.jsx";
 import DashboardLayout from "../Components/DashboardLayout/DashboardLayout.jsx";
 import Transactions from "../Dashboard/Transactions/Transactions.jsx";
+import Budgets from "../Dashboard/Budgets/Budgets.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import ContactUs from "../Pages/ContactUs.jsx";
 import TermsConditions from "../Pages/TermsConditions.jsx";
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
             {
                 path: 'transactions',
                 element: <Transactions />
+            },
+            {
+                path: 'budgets',
+                element: <Budgets />
             },
            
         ]

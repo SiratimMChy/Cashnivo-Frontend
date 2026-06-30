@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Trash2, Filter, TrendingUp, TrendingDown, Activity, Pencil, X } from 'lucide-react';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 import ExportTransactions from './ExportTransactions';
 
 const Transactions = () => {
@@ -45,19 +46,29 @@ const Transactions = () => {
     const fmtDate = d => new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
     const handleDelete = (id) => {
-        if (!window.confirm('Delete this transaction?')) return;
-        setDeletingId(id);
-
-        axios.delete(`https://cashnivo.vercel.app/transactions/${id}`)
-            .then(() => {
-                setTransactions(prev => prev.filter(t => t._id !== id));
-                toast.success('Transaction deleted.');
-            })
-            .catch(err => {
-                console.error(err);
-                toast.error('Failed to delete transaction.');
-            })
-            .finally(() => setDeletingId(null));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#6b7280',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setDeletingId(id);
+                axios.delete(`https://cashnivo.vercel.app/transactions/${id}`)
+                    .then(() => {
+                        setTransactions(prev => prev.filter(t => t._id !== id));
+                        toast.success('Transaction deleted.');
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        toast.error('Failed to delete transaction.');
+                    })
+                    .finally(() => setDeletingId(null));
+            }
+        });
     };
 
     const handleEditOpen = (t) => {

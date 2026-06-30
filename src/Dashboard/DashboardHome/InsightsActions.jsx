@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { TrendingUp, TrendingDown, Zap, Target } from "lucide-react";
 
-const InsightsActions = ({ insights, fmt }) => {
+const InsightsActions = ({ insights, monthlyData, fmt }) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Insights */}
@@ -23,8 +23,23 @@ const InsightsActions = ({ insights, fmt }) => {
                 </div>
             </div>
 
+            {/* Recent Income */}
+            <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-6">
+                <h3 className="font-bold text-base-content dark:text-base-content/90 mb-4 text-base sm:text-lg">Recent Income</h3>
+                <div className="space-y-3">
+                    {monthlyData && monthlyData.map((data, idx) => (
+                        <div key={idx} className="bg-base-100 dark:bg-base-100/50 rounded-xl p-3 border border-base-content/5 dark:border-base-content/10 flex justify-between items-center">
+                            <span className="text-sm font-semibold text-base-content dark:text-base-content/90">{data.month}</span>
+                            <span className="text-sm font-bold text-green-600 dark:text-green-400">
+                                {data.income > 0 ? '+' : ''}{fmt(data.income)}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             {/* Quick Actions */}
-            <div className="lg:col-span-2 card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-6">
+            <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-6">
                 <h3 className="font-bold text-base-content dark:text-base-content/90 mb-4 text-base sm:text-lg">Quick Actions</h3>
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <Link

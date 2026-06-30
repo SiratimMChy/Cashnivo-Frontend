@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import { LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { LogOut, ChevronLeft, ChevronRight, X, Target } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import auth from '../../firebase/firebase.config';
@@ -23,6 +23,7 @@ const Aside = () => {
         { to: '/dashboard/add-transaction', icon: <MdOutlineAddCircle className="w-5 h-5" />, label: 'Add Transaction' },
         { to: '/dashboard/Profile', icon: <PiUserCircleGearFill className="w-5 h-5" />, label: 'Profile' },
         { to: '/dashboard/transactions', icon: <SiMoneygram className="w-5 h-5" />, label: 'Transction' },
+        { to: '/dashboard/budgets', icon: <Target className="w-5 h-5" />, label: 'Budgets' },
     ];
 
     const activeClass = 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm';

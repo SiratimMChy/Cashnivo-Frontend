@@ -4,12 +4,15 @@ import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Save } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 const AddTransaction = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [categories, setCategories] = useState([]);
+    const [budgets, setBudgets] = useState([]);
+    const [transactions, setTransactions] = useState([]);
     const [loadingCategories, setLoadingCategories] = useState(true);
     const [formData, setFormData] = useState({
         type: 'expense',
@@ -23,26 +26,35 @@ const AddTransaction = () => {
         if (!user?.email) return;
         let active = true;
 
-        const fetchCategories = async () => {
-            try {
-                setLoadingCategories(true);
-                const res = await axios.get(`https://cashnivo.vercel.app/categories?email=${user.email}`);
-                if (!active) return;
-                const data = Array.isArray(res.data) ? res.data : [];
-                setCategories(data);
-                setFormData(prev => ({
-                    ...prev,
-                    category: prev.category || (data.find(c => c.type === prev.type)?.name || ''),
-                }));
-            } catch (err) {
-                console.error(err);
-                toast.error('Unable to load categories.');
-            } finally {
-                if (active) setLoadingCategories(false);
-            }
+        const fetchData = () => {
+            setLoadingCategories(true);
+            const fetchCats = axios.get(`https://cashnivo.vercel.app/categories?email=${user.email}`);
+            const fetchBudgets = axios.get(`https://cashnivo.vercel.app/budgets?email=${user.email}`).catch(() => ({ data: [] }));
+            const fetchTx = axios.get(`https://cashnivo.vercel.app/transactions?email=${user.email}`);
+
+            Promise.all([fetchCats, fetchBudgets, fetchTx])
+                .then(([catsRes, budgetsRes, txRes]) => {
+                    if (!active) return;
+                    const data = Array.isArray(catsRes.data) ? catsRes.data : [];
+                    setCategories(data);
+                    setBudgets(Array.isArray(budgetsRes.data) ? budgetsRes.data : []);
+                    setTransactions(Array.isArray(txRes.data) ? txRes.data : []);
+                    
+                    setFormData(prev => ({
+                        ...prev,
+                        category: prev.category || (data.find(c => c.type === prev.type)?.name || ''),
+                    }));
+                    setLoadingCategories(false);
+                })
+                .catch(err => {
+                    if (!active) return;
+                    console.error(err);
+                    toast.error('Unable to load data.');
+                    setLoadingCategories(false);
+                });
         };
 
-        fetchCategories();
+        fetchData();
         return () => { active = false; };
     }, [user?.email]);
 
@@ -75,6 +87,32 @@ const AddTransaction = () => {
         if (Number.isNaN(amount) || amount <= 0) {
             toast.error('Please enter a valid amount.');
             return;
+        }
+
+        if (formData.type === 'expense') {
+            const budget = budgets.find(b => b.category === formData.category);
+            if (budget) {
+                const now = new Date(formData.date);
+                const currentMonthTx = transactions.filter(t => {
+                    const txDate = new Date(t.date);
+                    return t.category === formData.category && 
+                           t.type === 'expense' && 
+                           txDate.getMonth() === now.getMonth() && 
+                           txDate.getFullYear() === now.getFullYear();
+                });
+                
+                const spent = currentMonthTx.reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+                
+                if (spent + amount > budget.amount) {
+                    await Swal.fire({
+                        icon: 'warning',
+                        title: 'Budget Exceeded!',
+                        text: `Your fixed budget for ${formData.category} has been exceeded.`,
+                        confirmButtonColor: '#f59e0b',
+                        confirmButtonText: 'Okay'
+                    });
+                }
+            }
         }
 
         const transaction = {

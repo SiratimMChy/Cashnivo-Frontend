@@ -163,7 +163,7 @@ const DashboardHome = () => {
                 <FinancialSummary stats={stats} monthlyData={monthlyData} categoryData={categoryData} fmt={fmt} />
 
                 {/* Insights & Actions Component */}
-                <InsightsActions insights={insights} fmt={fmt} />
+                <InsightsActions insights={insights} monthlyData={monthlyData} fmt={fmt} />
 
                 {/* Recent Transactions Component */}
                 <RecentTransactions transactions={transactions} fmt={fmt} fmtCompact={fmtCompact} fmtDate={fmtDate} />
