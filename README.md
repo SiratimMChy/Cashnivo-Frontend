@@ -1,4 +1,4 @@
-# 💰 Cashnivo - Personal Finance Tracker
+# Cashnivo - Personal Finance Tracker
 
 > Take control of your finances with a modern, intuitive, and secure expense tracking platform.
 
