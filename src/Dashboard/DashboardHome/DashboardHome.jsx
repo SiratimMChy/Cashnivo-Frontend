@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
-import FinancialSummary from "./FinancialSummary";
-import InsightsActions from "./InsightsActions";
-import RecentTransactions from "./RecentTransactions";
+import FinancialSummary from "./components/FinancialSummary";
+import InsightsActions from "./components/InsightsActions";
+import RecentTransactions from "./components/RecentTransactions";
 import { FaStar, FaThumbsUp, FaChartLine } from "react-icons/fa";
 
 const DashboardHome = () => {
@@ -34,7 +34,7 @@ const DashboardHome = () => {
                 );
                 const data = Array.isArray(res.data) ? res.data : [];
 
-                // Calculate stats
+                // Calculate total income, expense, and balance from all transactions
                 const s = data.reduce((acc, t) => {
                     const amt = parseFloat(t.amount) || 0;
                     if (t.type === 'income') { acc.totalIncome += amt; acc.incomeCount++; }
@@ -47,18 +47,16 @@ const DashboardHome = () => {
                 setStats(s);
                 setTransactions(data);
 
-                // Monthly data (last 3 months)
+                // Prepare data for the last 3 months to show in the Income vs Expense chart
                 const monthArray = [];
                 const now = new Date();
                 
-                // Create array of last 3 months
                 for (let i = 2; i >= 0; i--) {
                     const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
                     const monthStr = date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
                     monthArray.push({ month: monthStr, income: 0, expense: 0, monthNum: date.getMonth(), yearNum: date.getFullYear() });
                 }
 
-                // Add transaction data to months
                 data.forEach(t => {
                     const tDate = new Date(t.date);
                     const tMonth = tDate.getMonth();
@@ -75,7 +73,7 @@ const DashboardHome = () => {
                 
                 setMonthlyData(monthArray);
 
-                // Category breakdown
+                // Calculate total expenses for each category to find the top spending category
                 const catMap = {};
                 data.filter(t => t.type === 'expense').forEach(t => {
                     catMap[t.category] = (catMap[t.category] || 0) + (parseFloat(t.amount) || 0);
@@ -84,7 +82,7 @@ const DashboardHome = () => {
                     .sort((a, b) => b.value - a.value);
                 setCategoryData(catArray);
 
-                // Insights
+                // Generate smart financial insights based on this month's spending habits
                 const topCat = catArray[0];
                 const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
                 const thisMonthExpense = data
@@ -118,7 +116,6 @@ const DashboardHome = () => {
     const fmtCompact = amt => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 1 }).format(amt);
     const fmtDate = d => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-    // Skeleton loader
     const SkeletonCard = () => (
         <div className="card bg-base-200 border border-base-content/10 p-4 sm:p-5 animate-pulse">
             <div className="h-10 bg-base-300 rounded-lg mb-3"></div>
@@ -146,7 +143,6 @@ const DashboardHome = () => {
         <div className="min-h-screen bg-base-100 px-3 py-6 sm:px-6 lg:px-10">
             <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
 
-                {/* Header */}
                 <div>
                     <p className="text-xs sm:text-sm uppercase tracking-[0.2em] font-extrabold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                         Cashnivo
@@ -159,13 +155,10 @@ const DashboardHome = () => {
 
                 {error && <div className="alert alert-error text-sm"><span>{error}</span></div>}
 
-                {/* Financial Summary Component */}
-                <FinancialSummary stats={stats} monthlyData={monthlyData} categoryData={categoryData} fmt={fmt} />
+                <FinancialSummary stats={stats} monthlyData={monthlyData} categoryData={categoryData} fmt={fmt} transactions={transactions} />
 
-                {/* Insights & Actions Component */}
                 <InsightsActions insights={insights} monthlyData={monthlyData} fmt={fmt} />
 
-                {/* Recent Transactions Component */}
                 <RecentTransactions transactions={transactions} fmt={fmt} fmtCompact={fmtCompact} fmtDate={fmtDate} />
 
             </div>

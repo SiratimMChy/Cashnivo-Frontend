@@ -1,13 +1,13 @@
 import { ArrowDownRight, ArrowUpRight, TrendingDown, TrendingUp, Wallet, Target } from "lucide-react";
-import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { useEffect, useState } from "react";
+import ExpenseBreakdownCard from "./ExpenseBreakdownCard";
 
-const FinancialSummary = ({ stats, monthlyData, categoryData, fmt }) => {
+const FinancialSummary = ({ stats, monthlyData, categoryData, fmt, transactions }) => {
     const savingsRate = stats.totalIncome > 0 ? Math.round((stats.balance / stats.totalIncome) * 100) : 0;
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
-        // Check initial theme
         const checkTheme = () => {
             const theme = document.documentElement.getAttribute('data-theme');
             setIsDark(theme === 'dark');
@@ -15,21 +15,18 @@ const FinancialSummary = ({ stats, monthlyData, categoryData, fmt }) => {
 
         checkTheme();
 
-        // Listen for theme changes
         const observer = new MutationObserver(checkTheme);
         observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
         return () => observer.disconnect();
     }, []);
 
-    // Theme-aware colors - lighter for dark mode, vibrant for light mode
     const COLORS = isDark
         ? ['#60a5fa', '#22d3ee', '#4ade80', '#fbbf24', '#f87171', '#a78bfa', '#f472b6', '#2dd4bf']
         : ['#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#14b8a6'];
 
     return (
         <>
-            {/* Financial Summary Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {[
                     {
@@ -78,9 +75,7 @@ const FinancialSummary = ({ stats, monthlyData, categoryData, fmt }) => {
                 ))}
             </div>
 
-            {/* Charts Section */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                {/* Monthly Chart */}
                 <div className="lg:col-span-2 card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-6">
                     <h3 className="font-bold text-base-content dark:text-base-content/90 mb-4 text-base sm:text-lg">Income vs Expense (3 Months)</h3>
                     {monthlyData.length > 0 ? (
@@ -119,37 +114,7 @@ const FinancialSummary = ({ stats, monthlyData, categoryData, fmt }) => {
                     )}
                 </div>
 
-                {/* Expense Breakdown */}
-                <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-6">
-                    <h3 className="font-bold text-base-content dark:text-base-content/90 mb-4 text-base sm:text-lg">Expense Breakdown</h3>
-                    {categoryData.length > 0 ? (
-                        <div className="space-y-4">
-                            <ResponsiveContainer width="100%" height={250}>
-                                <PieChart>
-                                    <Pie data={categoryData} cx="50%" cy="50%" innerRadius={50} outerRadius={90} paddingAngle={2} dataKey="value" label={false}>
-                                        {categoryData.map((_, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                    <Tooltip formatter={(value) => fmt(value)} contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: 'none', borderRadius: '8px', color: '#fff' }} />
-                                </PieChart>
-                            </ResponsiveContainer>
-                            <div className="grid grid-cols-2 gap-2 text-xs">
-                                {categoryData.map((cat, idx) => (
-                                    <div key={cat.name} className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: COLORS[idx % COLORS.length] }}></div>
-                                        <div className="min-w-0">
-                                            <p className="font-semibold text-base-content dark:text-base-content/90 truncate">{cat.name}</p>
-                                            <p className="text-base-content/60 dark:text-base-content/50">{fmt(cat.value)}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="h-80 flex items-center justify-center text-base-content/40">No expenses yet</div>
-                    )}
-                </div>
+                <ExpenseBreakdownCard transactions={transactions} categoryData={categoryData} COLORS={COLORS} fmt={fmt} />
             </div>
         </>
     );

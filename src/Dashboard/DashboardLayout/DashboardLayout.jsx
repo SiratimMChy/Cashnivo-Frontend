@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router';
 import Aside from '../Aside/Aside';
-import AiChatbot from '../../Dashboard/AiChatbot/AiChatbot';
+import AiChatbot from '../AiChatbot/AiChatbot';
 
 const DashboardLayout = () => {
 
