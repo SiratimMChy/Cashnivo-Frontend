@@ -28,7 +28,7 @@ const AiChatbot = () => {
             }
 
             // Fetch chat history from DB
-            if (messages.length === 1) { 
+            if (messages.length === 1) {
                 axios.get(`https://cashnivo.vercel.app/chats?email=${encodeURIComponent(user.email)}`)
                     .then(res => {
                         if (res.data && res.data.length > 0) {
@@ -47,7 +47,7 @@ const AiChatbot = () => {
     const handleClearChat = () => {
         const defaultMessage = [{ role: 'model', content: "Hi! I'm your AI Financial Advisor. How can I help you today?" }];
         setMessages(defaultMessage);
-        
+
         if (user?.email) {
             axios.delete(`https://cashnivo.vercel.app/chats?email=${encodeURIComponent(user.email)}`)
                 .catch(err => console.error("Failed to clear chat history", err));
@@ -59,7 +59,7 @@ const AiChatbot = () => {
 
         const userText = input.trim();
         setInput('');
-        
+
         const newMessagesUser = [...messages, { role: 'user', content: userText }];
         setMessages(newMessagesUser);
         setIsLoading(true);
@@ -74,12 +74,43 @@ const AiChatbot = () => {
                 `${t.date.split('T')[0]}: ${t.type === 'income' ? '+' : '-'}$${t.amount} for ${t.category} (${t.description || 'no notes'})`
             ).join('\n');
 
-            const systemInstruction = `You are a helpful, professional AI Financial Advisor built into the 'Cashnivo' expense tracker app. 
-You are talking to the user.
-Here is the user's recent transaction history:\n${txContext || 'No transactions yet.'}
-Use this data to answer their financial questions, provide insights, and give budgeting advice. Do not mention that you were given this context directly, just use it naturally. Be concise.`;
+            const systemInstruction = `You are the AI Financial Advisor for Cashnivo.
 
-            // Prepare history for Groq API (OpenAI compatible)
+User's transaction history:
+${txContext || 'No transactions yet.'}
+
+Your role:
+Act as a personal financial advisor. Analyze the user's available transaction history and provide practical, data-driven financial guidance based on their actual financial activity.
+
+Analysis rules:
+- Analyze the user's transaction history across the available period, especially the most recent 6 months when sufficient data is available.
+- Consider income, expenses, spending categories, monthly patterns, spending trends, recurring expenses, and changes in spending behavior.
+- Use the available transaction data to evaluate the user's financial situation and help them make informed spending and purchasing decisions.
+- When evaluating a financial decision or purchase, determine whether it appears affordable or financially reasonable based on the available data.
+- Identify overspending, unusually high expenses, significant spending increases, and categories where the user may be spending more than usual when supported by the data.
+- Compare relevant income and expenses when determining affordability or financial sustainability.
+- Use calculations when they are useful for making a financial judgment, but avoid unnecessary calculations.
+- Give a clear conclusion and briefly explain the key factors behind it.
+- Distinguish between what the transaction data shows and what is your financial recommendation.
+- If the available data is insufficient to make a reliable conclusion, clearly explain what cannot be determined.
+- Never invent income, expenses, savings, balances, salary, bills, dates, purchase prices, or any other financial facts.
+- Never assume financial information that is not present in the transaction data.
+- Base financial insights and recommendations on the user's actual transaction history.
+
+Response style:
+- Be professional, concise, clear, and natural.
+- Answer the user's actual question directly.
+- Keep responses focused, usually 2–6 sentences or a few bullet points.
+- Provide deeper analysis when the question requires it, but do not produce unnecessary long reports.
+- Do not use Markdown tables.
+- Present financial figures using short sentences or bullet points instead.
+- Keep the response visually clean and easy to read in a chat interface.
+- Do not force headings or multiple sections unless they genuinely improve readability.
+- Use Markdown only when it improves readability.
+- Avoid repetitive phrases, excessive formatting, and emojis.
+- Respond like a professional personal financial advisor having a conversation, not like generating a financial report.`;
+
+
             const messagesPayload = [
                 { role: 'system', content: systemInstruction },
                 ...newMessagesUser.map(m => ({
@@ -91,7 +122,7 @@ Use this data to answer their financial questions, provide insights, and give bu
             const response = await axios.post(
                 'https://api.groq.com/openai/v1/chat/completions',
                 {
-                    model: 'llama-3.3-70b-versatile',
+                    model: 'openai/gpt-oss-120b',
                     messages: messagesPayload,
                 },
                 {
@@ -104,9 +135,9 @@ Use this data to answer their financial questions, provide insights, and give bu
 
             const botText = response.data.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response.";
             const newMessagesBot = [...newMessagesUser, { role: 'model', content: botText }];
-            
+
             setMessages(newMessagesBot);
-        
+
             axios.post(`https://cashnivo.vercel.app/chats`, { email: user.email, messages: newMessagesBot })
                 .catch(err => console.error("Failed to sync bot message", err));
 

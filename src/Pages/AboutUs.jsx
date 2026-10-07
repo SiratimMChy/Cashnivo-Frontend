@@ -23,8 +23,8 @@ const AboutUs = () => {
                     <div className="card bg-base-200 border border-base-content/10 shadow-sm p-6">
                         <h2 className="text-2xl font-semibold mb-4">What is Cashnivo?</h2>
                         <p className="text-base-content/70 leading-relaxed">
-                            Cashnivo is a modern expense tracking application designed to help individuals and families manage their finances effortlessly. 
-                            With intuitive features for adding expenses, incomes, and categories, we make budgeting simple and effective.
+                            Cashnivo is a personal finance tracker built to help you and your family take control of your money without the stress. 
+                            Beyond just logging your daily expenses and incomes, you get a friendly, built-in AI Financial Advisor that acts like a real human chatting with you, analyzing your spending habits, and giving you personalized advice to help you reach your goals.
                         </p>
                     </div>
 
@@ -32,11 +32,13 @@ const AboutUs = () => {
                     <div className="card bg-base-200 border border-base-content/10 shadow-sm p-6">
                         <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
                         <ul className="list-disc list-inside space-y-2 text-base-content/70">
+                            <li>Get personalized insights from our Smart AI Financial Advisor</li>
                             <li>Track expenses and incomes in real-time</li>
-                            <li>Organize with customizable categories</li>
-                            <li>View detailed dashboards and reports</li>
-                            <li>Secure user authentication and data storage</li>
-                            <li>Responsive design for all devices</li>
+                            <li>Easily log your daily expenses and income on the go</li>
+                            <li>Create custom categories that actually match your lifestyle</li>
+                            <li>See exactly where your money goes with beautiful, easy-to-read charts</li>
+                            <li>Keep your personal financial data completely safe and secure</li>
+                            <li>Works perfectly on your phone, tablet, or computer</li>
                         </ul>
                     </div>
 

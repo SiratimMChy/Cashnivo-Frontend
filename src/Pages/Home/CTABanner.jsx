@@ -13,8 +13,8 @@ const CTABanner = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <section className="bg-base-100 px-4 py-20 lg:px-10">
-            <div className="max-w-5xl mx-auto">
+        <section className="bg-base-100 px-4 py-20 lg:px-30">
+            <div className="w-full mx-auto">
                 <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-8 py-14 lg:px-16 lg:py-20 text-center">
 
                     {/* Decorative blurs */}
