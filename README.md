@@ -272,31 +272,61 @@ cashnivo/
 ├── public/                  # Static assets
 ├── src/
 │   ├── assets/              # Images and icons
+│   │   ├── 1.png
+│   │   ├── error-404.png
+│   │   ├── Hero.png
+│   │   └── logo.png
 │   ├── Components/          # Reusable React components
-│   │   ├── Footer/          # Shared site footer
-│   │   └── Navbar/          # Top navigation bar
+│   │   ├── Footer/
+│   │   │   └── Footer.jsx
+│   │   └── Navbar/
+│   │       └── Navbar.jsx
 │   ├── Dashboard/           # Protected application modules
-│   │   ├── AiChatbot/       # Groq AI Floating Widget
+│   │   ├── AiChatbot/
+│   │   │   └── AiChatbot.jsx
 │   │   ├── Aside/           # Sidebar navigation
+│   │   │   └── Aside.jsx
 │   │   ├── Budgets/         # Budget management module
+│   │   │   └── Budgets.jsx
 │   │   ├── DashboardHome/   # Main overview & charts
+│   │   │   ├── DashboardHome.jsx
+│   │   │   └── components/
+│   │   │       ├── ExpenseBreakdownCard.jsx
+│   │   │       ├── FinancialSummary.jsx
+│   │   │       ├── InsightsActions.jsx
+│   │   │       └── RecentTransactions.jsx
 │   │   ├── DashboardLayout/ # Dashboard shell wrapper
+│   │   │   └── DashboardLayout.jsx
 │   │   └── Transactions/    # Transaction records & forms
+│   │       ├── AddTransaction.jsx
+│   │       ├── ExportTransactions.jsx
+│   │       └── Transactions.jsx
+│   ├── firebase/            # Firebase SDK configuration
+│   │   └── firebase.config.js
 │   ├── Pages/               # Public and Auth pages
-│   │   ├── Home/            # Landing page components
 │   │   ├── AboutUs.jsx      # About info
 │   │   ├── Categories.jsx   # Category management
 │   │   ├── ContactUs.jsx    # Contact info
-│   │   ├── Login.jsx        # Authentication
-│   │   ├── Register.jsx     # User registration
-│   │   ├── Profile.jsx      # User profile management
 │   │   ├── ErrorPage.jsx    # 404 Error page
 │   │   ├── Forgetpassword.jsx # Password recovery
-│   │   └── TermsConditions.jsx # Legal terms page
+│   │   ├── Login.jsx        # Authentication
+│   │   ├── Profile.jsx      # User profile management
+│   │   ├── Register.jsx     # User registration
+│   │   ├── TermsConditions.jsx # Legal terms page
+│   │   └── Home/            # Landing page components
+│   │       ├── CTABanner.jsx
+│   │       ├── DashboardPreview.jsx
+│   │       ├── Features.jsx
+│   │       ├── Hero.jsx
+│   │       ├── Home.jsx
+│   │       └── HowItWorks.jsx
 │   ├── Provider/            # React Context (AuthProvider)
+│   │   └── AuthProvider.jsx
 │   ├── RootLayout/          # Main application layout wrapper
-│   ├── firebase/            # Firebase SDK configuration
+│   │   └── RootLayout.jsx
 │   ├── routes/              # Client-side routing logic
+│   │   ├── PrivateRoute.jsx
+│   │   └── routes.jsx
 │   ├── App.css              # App specific styles
 │   ├── App.jsx              # Main App wrapper
 │   ├── index.css            # Tailwind global styles
@@ -304,6 +334,7 @@ cashnivo/
 ├── .env.local               # Environment variables
 ├── package.json             # Frontend dependencies
 ├── tailwind.config.js       # Tailwind configuration
+├── vercel.json              # Vercel deployment config
 ├── vite.config.js           # Vite bundler config
 └── README.md                # Project documentation
 ```
