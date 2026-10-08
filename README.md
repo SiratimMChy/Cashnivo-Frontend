@@ -273,15 +273,15 @@ cashnivo/
 ├── src/
 │   ├── assets/              # Images and icons
 │   ├── Components/          # Reusable React components
-│   │   ├── Aside/           # Sidebar navigation
-│   │   ├── DashboardLayout/ # Dashboard shell wrapper
 │   │   ├── Footer/          # Shared site footer
 │   │   └── Navbar/          # Top navigation bar
 │   ├── Dashboard/           # Protected application modules
 │   │   ├── AiChatbot/       # Groq AI Floating Widget
+│   │   ├── Aside/           # Sidebar navigation
+│   │   ├── Budgets/         # Budget management module
 │   │   ├── DashboardHome/   # Main overview & charts
-│   │   ├── Transactions/    # Paginated transaction list
-│   │   └── AddTransaction.jsx # Form for new records
+│   │   ├── DashboardLayout/ # Dashboard shell wrapper
+│   │   └── Transactions/    # Transaction records & forms
 │   ├── Pages/               # Public and Auth pages
 │   │   ├── Home/            # Landing page components
 │   │   ├── AboutUs.jsx      # About info
@@ -297,6 +297,7 @@ cashnivo/
 │   ├── RootLayout/          # Main application layout wrapper
 │   ├── firebase/            # Firebase SDK configuration
 │   ├── routes/              # Client-side routing logic
+│   ├── App.css              # App specific styles
 │   ├── App.jsx              # Main App wrapper
 │   ├── index.css            # Tailwind global styles
 │   └── main.jsx             # React entry point
