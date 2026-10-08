@@ -78,10 +78,15 @@ Cashnivo streamlines financial tracking:
 - **Financial Summary Cards**: View current balance, total income, total expenses, and savings rate at a glance
 - **Income vs Expense Chart**: Interactive bar charts comparing monthly income against expenses
 - **Expense Breakdown Chart**: Interactive pie charts showing a clear breakdown of expenses by category
-- **Insights & Quick Actions**: Smart automated feedback (e.g., daily average expenses, savings messages)
+- **Insights & Quick Actions**: Smart automated feedback and recent income overview
+
+### 📊 Budget Management
+- **Set Budgets**: Create budget limits for specific categories
+- **Progress Tracking**: Visual indicators to monitor spending against your budget limits
+- **Alerts**: Stay informed when you approach or exceed your budget
 
 ### 🤖 AI Financial Advisor
-- **Context-Aware Assistance**: Chat with an AI (Llama 3 via Groq) that understands your transaction history
+- **Context-Aware Assistance**: Chat with an AI (gpt-oss-120b) that understands your transaction history
 - **Smart Recommendations**: Get real-time budgeting advice based on your spending habits
 - **Persistent Chat**: Chat history is saved securely to the cloud and spans across sessions
 - **Full Control**: Option to instantly clear your AI chat history from the UI and database
@@ -90,6 +95,7 @@ Cashnivo streamlines financial tracking:
 - **Add Transactions**: Record income and expenses with amount, date, category, and description
 - **Full CRUD Controls**: Edit and delete records with ease
 - **Smart Filtering & Pagination**: Filter by type, search through history, and browse with paginated performance
+- **Export Data**: Download your transaction history in PDF and Excel formats
 
 ### 📁 Custom Category Management
 - **Type-Specific Management**: Separate controls for income vs. expense categories
@@ -124,7 +130,7 @@ Cashnivo streamlines financial tracking:
 |---------|---------|-------------|
 | **Firebase** | 12.13.0 | Authentication and high-performance hosting |
 | **Axios** | 1.16.0 | Promise-based HTTP client for API requests |
-| **Groq API** | Llama-3 | Ultra-fast AI inference for the financial advisor |
+| **Groq API** | gpt-oss-120b | Ultra-fast AI inference for the financial advisor |
 | **REST API** | Custom | Backend endpoints for data persistence |
 | **ImgBB API** | REST | Cloud storage for user profile avatars |
 
@@ -345,6 +351,9 @@ Cashnivo integrates with a custom REST API. All endpoints return JSON responses.
 | `DELETE` | `/transactions/{id}` | Delete a transaction | Yes |
 | `GET` | `/categories?email={email}` | Fetch default + custom user categories | Yes |
 | `POST` | `/categories` | Create a new custom category | Yes |
+| `GET` | `/budgets?email={email}` | Fetch all budgets for a user | Yes |
+| `POST` | `/budgets` | Create or update a budget | Yes |
+| `DELETE` | `/budgets/{id}` | Delete a budget | Yes |
 | `GET` | `/chats?email={email}` | Fetch AI chat history for a user | Yes |
 | `POST` | `/chats` | Update/Create AI chat history | Yes |
 | `DELETE` | `/chats?email={email}` | Delete AI chat history | Yes |
@@ -394,8 +403,12 @@ Cashnivo integrates with a custom REST API. All endpoints return JSON responses.
 
 ## 🌐 Deployment
 
-This project is configured for seamless deployment on **Firebase Hosting**.
+This project is configured for seamless deployment on **Vercel** and **Firebase Hosting**.
 
+### Vercel Deployment
+The project includes a `vercel.json` configuration file. Simply connect your GitHub repository to Vercel for automatic deployments with proper client-side routing.
+
+### Firebase Hosting
 ```bash
 # Install Firebase CLI
 npm install -g firebase-tools
