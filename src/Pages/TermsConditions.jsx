@@ -5,17 +5,17 @@ const TermsConditions = () => {
         <div className="min-h-screen bg-base-100 px-4 py-8 lg:px-10">
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
-                <div className="mb-8 text-center">
-                    <p className="text-sm uppercase tracking-[0.2em] font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <div className="mb-6 sm:mb-8 text-center">
+                    <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                         Cashnivo
                     </p>
-                    <h1 className="text-3xl lg:text-5xl font-extrabold text-slate-900 mb-4">
+                    <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-1 mb-2 sm:mb-4">
                         Terms & Conditions
                     </h1>
-                    <p className="text-base-content/70 max-w-2xl mx-auto">
+                    <p className="text-xs sm:text-base text-base-content/70 max-w-2xl mx-auto">
                         Please read these terms and conditions carefully before using Cashnivo expense tracker service.
                     </p>
-                    <p className="text-sm text-base-content/50 mt-2">
+                    <p className="text-[11px] sm:text-sm text-base-content/50 mt-1 sm:mt-2">
                         Last Updated: May 2026
                     </p>
                 </div>

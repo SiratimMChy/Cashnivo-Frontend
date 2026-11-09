@@ -154,15 +154,15 @@ const AddTransaction = () => {
     return (
         <div className="min-h-screen bg-base-100 px-4 py-8 lg:px-10">
             <div className="max-w-4xl mx-auto">
-                <div className="mb-8 flex items-center gap-4">
+                <div className="mb-6 sm:mb-8 flex items-center gap-4">
                     <div>
-                        <p className="text-sm uppercase tracking-[0.2em] font-extrabold text-blue-600">
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-extrabold text-blue-600">
                             Cashnivo
                         </p>
-                        <h1 className="text-3xl lg:text-4xl font-extrabold text-base-content">
+                        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-1">
                             Add Transaction
                         </h1>
-                        <p className="text-base-content/70 mt-2">
+                        <p className="text-xs sm:text-base text-base-content/70 mt-1.5">
                             Record a new expense or income and keep your budget up to date.
                         </p>
                     </div>

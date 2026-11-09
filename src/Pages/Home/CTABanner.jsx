@@ -13,9 +13,9 @@ const CTABanner = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <section className="bg-base-100 px-4 py-20 lg:px-30">
+        <section className="bg-base-100 px-4 py-10 sm:py-20 lg:px-30">
             <div className="w-full mx-auto">
-                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-8 py-14 lg:px-16 lg:py-20 text-center">
+                <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-4 py-8 sm:px-16 sm:py-20 text-center">
 
                     {/* Decorative blurs */}
                     <div className="pointer-events-none absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl" />
@@ -23,33 +23,33 @@ const CTABanner = () => {
 
                     {/* Content */}
                     <div className="relative">
-                        <p className="text-xs uppercase tracking-[0.3em] text-blue-400 font-bold mb-4">
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-400 font-bold mb-2 sm:mb-4">
                             {user ? 'Welcome back' : 'Get started today'}
                         </p>
-                        <h2 className="text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-5">
+                        <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-3 sm:mb-5">
                             Stop wondering where<br className="hidden sm:block" />
                             your money went.
                         </h2>
-                        <p className="text-white/50 text-sm lg:text-base max-w-xl mx-auto mb-10 leading-relaxed">
+                        <p className="text-white/70 text-xs sm:text-sm lg:text-base max-w-xl mx-auto mb-6 sm:mb-10 leading-relaxed">
                             {user
                                 ? 'Your dashboard is ready. Track your spending, review your categories, and stay on top of your finances.'
                                 : 'Join thousands of people who use Cashnivo to take back control of their finances — one transaction at a time.'
                             }
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 sm:mb-10">
                             {user ? (
                                 <>
                                     <Link
                                         to="/dashboard/dashboardhome"
-                                        className="btn bg-white text-slate-900 hover:bg-blue-50 border-none font-bold px-8 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
+                                        className="btn bg-white text-slate-900 hover:bg-blue-50 border-none font-bold px-6 sm:px-8 text-sm sm:text-base hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
                                     >
                                         Go to Dashboard
                                         <ArrowRight size={16} className="ml-1" />
                                     </Link>
                                     <Link
                                         to="/dashboard/add-transaction"
-                                        className="btn btn-outline border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold px-8 transition-all duration-200"
+                                        className="btn btn-outline border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold px-6 sm:px-8 text-sm sm:text-base transition-all duration-200"
                                     >
                                         Add Transaction
                                     </Link>
@@ -58,14 +58,14 @@ const CTABanner = () => {
                                 <>
                                     <Link
                                         to="/register"
-                                        className="btn bg-white text-slate-900 hover:bg-blue-50 border-none font-bold px-8 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
+                                        className="btn bg-white text-slate-900 hover:bg-blue-50 border-none font-bold px-6 sm:px-8 text-sm sm:text-base hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
                                     >
                                         Create Free Account
                                         <ArrowRight size={16} className="ml-1" />
                                     </Link>
                                     <Link
                                         to="/about-us"
-                                        className="btn btn-outline border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold px-8 transition-all duration-200"
+                                        className="btn btn-outline border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold px-6 sm:px-8 text-sm sm:text-base transition-all duration-200"
                                     >
                                         Learn More
                                     </Link>

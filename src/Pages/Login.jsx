@@ -76,13 +76,13 @@ const Login = () => {
                 {/* Card Container */}
                 <div className="bg-base-100 rounded-2xl shadow-2xl border border-base-content/10 overflow-hidden">
                     {/* Header with Gradient */}
-                    <div className="bg-linear-to-r from-blue-600 to-cyan-600 px-8 py-6 text-center">
-                        <h2 className="text-3xl font-bold text-white mb-2">Welcome Back!</h2>
-                        <p className="text-white/90 text-sm">Continue tracking your expenses with Cashnivo</p>
+                    <div className="bg-linear-to-r from-blue-600 to-cyan-600 px-6 py-5 sm:px-8 sm:py-6 text-center">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">Welcome Back!</h2>
+                        <p className="text-white/90 text-xs sm:text-sm">Continue tracking your expenses with Cashnivo</p>
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="p-8 space-y-5">
+                    <form onSubmit={handleSubmit} className="p-5 sm:p-8 space-y-4 sm:space-y-5">
                         {/* Email Field */}
                         <div className="form-control">
                             <label className="label">

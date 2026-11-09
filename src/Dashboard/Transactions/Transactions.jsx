@@ -129,11 +129,11 @@ const Transactions = () => {
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
-                        <p className="text-xs sm:text-sm uppercase tracking-[0.2em] font-extrabold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-extrabold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                             Cashnivo
                         </p>
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-base-content">Transactions</h1>
-                        <p className="mt-1 text-sm text-base-content/60 dark:text-base-content/50">{transactions.length} total records</p>
+                        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-1">Transactions</h1>
+                        <p className="mt-1.5 text-xs sm:text-base text-base-content/60 dark:text-base-content/50">{transactions.length} total records</p>
                     </div>
 
                     <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">

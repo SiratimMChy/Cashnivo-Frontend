@@ -122,13 +122,13 @@ const Register = () => {
                 {/* Card Container */}
                 <div className="bg-base-100 rounded-2xl shadow-2xl border border-base-content/10 overflow-hidden">
                     {/* Header with Gradient */}
-                    <div className="bg-linear-to-r from-blue-600 to-cyan-600 px-8 py-4 text-center">
-                        <h2 className="text-3xl font-bold text-white mb-2">Create Account</h2>
-                        <p className="text-white/90 text-sm">Start managing your expenses smarter with Cashnivo</p>
+                    <div className="bg-linear-to-r from-blue-600 to-cyan-600 px-6 py-4 sm:px-8 sm:py-5 text-center">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">Create Account</h2>
+                        <p className="text-white/90 text-xs sm:text-sm">Start managing your expenses smarter with Cashnivo</p>
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="p-8 space-y-4">
+                    <form onSubmit={handleSubmit} className="p-5 sm:p-8 space-y-3 sm:space-y-4">
                         {/* Name Field */}
                         <div className="form-control">
                             <label className="label">

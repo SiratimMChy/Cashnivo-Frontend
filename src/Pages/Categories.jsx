@@ -149,15 +149,15 @@ const Categories = () => {
             <div className="max-w-7xl mx-auto">
 
                 {/* HEADER */}
-                <div className="mb-8 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                <div className="mb-6 sm:mb-8 flex flex-col gap-2 sm:gap-3 lg:flex-row lg:items-end lg:justify-between">
                     <div>
-                        <p className="text-sm uppercase tracking-[0.2em] font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                             Cashnivo
                         </p>
-                        <h1 className="text-3xl lg:text-4xl font-extrabold text-base-content">
+                        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-1">
                             Manage Categories
                         </h1>
-                        <p className="mt-2 text-base-content/70 max-w-2xl">
+                        <p className="mt-1.5 sm:mt-2 text-xs sm:text-base text-base-content/70 max-w-2xl">
                             Add, edit, and delete categories so your expense tracker stays organised.
                         </p>
                     </div>
@@ -188,9 +188,9 @@ const Categories = () => {
                 <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
 
                     {/* ADD FORM */}
-                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-6">
-                        <h2 className="text-xl font-semibold mb-1">Add new category</h2>
-                        <p className="text-sm text-base-content/60 mb-4">
+                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-4 sm:p-6">
+                        <h2 className="text-lg sm:text-xl font-bold mb-1">Add new category</h2>
+                        <p className="text-xs sm:text-sm text-base-content/60 mb-4">
                             Adding to <span className="font-medium capitalize text-base-content/80">{activeTab}</span> categories
                         </p>
                         <form onSubmit={handleAddCategory} className="flex flex-col gap-4">
@@ -217,10 +217,10 @@ const Categories = () => {
                     </div>
 
                     {/* CATEGORY LIST */}
-                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-6">
+                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-4 sm:p-6">
                         <div className="mb-4">
-                            <h2 className="text-xl font-semibold capitalize">{activeTab} categories</h2>
-                            <p className="text-sm text-base-content/70">
+                            <h2 className="text-lg sm:text-xl font-bold capitalize">{activeTab} categories</h2>
+                            <p className="text-xs sm:text-sm text-base-content/70">
                                 Edit or remove any category you no longer need.
                             </p>
                         </div>

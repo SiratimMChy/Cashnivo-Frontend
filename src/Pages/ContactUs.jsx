@@ -23,22 +23,22 @@ const ContactUs = () => {
 
     return (
         <div className="min-h-screen bg-base-100 px-4 py-10 lg:px-10 overflow-x-hidden">
-            <div className="max-w-7xl mx-auto space-y-10">
+            <div className="max-w-7xl mx-auto space-y-6 sm:space-y-10">
                 <div className="text-center">
-                    <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-bold">
+                    <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-600 font-bold">
                         Cashnivo
                     </p>
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-base-content mt-3">
+                    <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2">
                         Contact Us
                     </h1>
-                    <p className="mt-4 text-base-content/70 max-w-2xl mx-auto">
+                    <p className="mt-2 sm:mt-4 text-xs sm:text-base text-base-content/70 max-w-2xl mx-auto">
                         Have a question or need support? Send us a message and our team will respond as soon as possible.
                     </p>
                 </div>
 
-                <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-8">
-                        <h2 className="text-2xl font-semibold mb-4">Send a message</h2>
+                <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-4 sm:p-8">
+                        <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Send a message</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <label className="flex flex-col gap-2">
                                 <span className="font-semibold text-base-content">Your Name</span>
@@ -101,9 +101,9 @@ const ContactUs = () => {
                         </form>
                     </div>
 
-                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-8">
-                        <h2 className="text-2xl font-semibold mb-4">Contact details</h2>
-                        <div className="space-y-6 text-base-content/80">
+                    <div className="card bg-base-200 border border-base-content/10 shadow-sm p-4 sm:p-8">
+                        <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Contact details</h2>
+                        <div className="space-y-4 sm:space-y-6 text-xs sm:text-sm text-base-content/80">
                             <div>
                                 <p className="font-semibold text-base-content mb-2">Customer support</p>
                                 <p>support@cashnivo.com</p>

@@ -184,8 +184,13 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full ring-2 ring-blue-500 ring-offset-base-100 ring-offset-2 hover:ring-4 transition-all duration-300">
                                     <img
                                         alt="User Avatar"
-                                        src={user?.photoURL}
+                                        src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}&background=0284c7&color=fff`}
                                         referrerPolicy="no-referrer"
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}&background=0284c7&color=fff`;
+                                        }}
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
                             </div>

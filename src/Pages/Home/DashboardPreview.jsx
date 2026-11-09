@@ -125,18 +125,18 @@ const DashboardPreview = () => {
 
     if (loading) {
         return (
-            <section className="relative bg-base-100 px-4 py-24 lg:px-10 overflow-hidden">
+            <section className="relative bg-base-100 px-4 py-10 sm:py-24 lg:px-10 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-blue-600/5 blur-3xl" />
                     <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-cyan-600/5 blur-3xl" />
                 </div>
                 <div className="relative max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-base-200 border border-base-content/10 mb-4">
-                            <Zap size={16} className="text-blue-600" />
-                            <span className="text-xs font-semibold text-base-content/60">Your Dashboard</span>
+                    <div className="text-center mb-8 sm:mb-16">
+                        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-base-200 border border-base-content/10 mb-2 sm:mb-4">
+                            <Zap size={14} className="text-blue-600 sm:w-4 sm:h-4" />
+                            <span className="text-[11px] sm:text-xs font-semibold text-base-content/60">Your Dashboard</span>
                         </div>
-                        <h2 className="text-4xl lg:text-5xl font-extrabold text-base-content mt-4">Financial Snapshot</h2>
+                        <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2 sm:mt-4">Financial Snapshot</h2>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-pulse mb-8">
                         {[...Array(4)].map((_, i) => (
@@ -154,7 +154,7 @@ const DashboardPreview = () => {
     }
 
     return (
-        <section className="relative bg-base-100 px-4 py-24 lg:px-10 overflow-hidden">
+        <section className="relative bg-base-100 px-4 py-10 sm:py-24 lg:px-10 overflow-hidden">
             {/* Gradient Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-blue-600/5 blur-3xl" />
@@ -163,22 +163,22 @@ const DashboardPreview = () => {
 
             <div className="relative max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-base-200 border border-base-content/10 mb-4">
-                        <Zap size={16} className="text-blue-600" />
-                        <span className="text-xs font-semibold text-base-content/60">Your Dashboard</span>
+                <div className="text-center mb-8 sm:mb-16">
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-base-200 border border-base-content/10 mb-2 sm:mb-4">
+                        <Zap size={14} className="text-blue-600 sm:w-4 sm:h-4" />
+                        <span className="text-[11px] sm:text-xs font-semibold text-base-content/60">Your Dashboard</span>
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-extrabold text-base-content mt-4">Financial Snapshot</h2>
-                    <p className="mt-4 text-base-content/60 max-w-2xl mx-auto">
+                    <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2 sm:mt-4">Financial Snapshot</h2>
+                    <p className="mt-2 sm:mt-4 text-xs sm:text-base text-base-content/60 max-w-2xl mx-auto">
                         Real-time overview of your finances
                     </p>
                 </div>
 
                 {/* Stats Pie Chart Card */}
-                <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-8 mb-8 rounded-2xl">
-                    <div className="mb-8">
-                        <h3 className="text-2xl font-bold text-base-content dark:text-base-content/90">Financial Overview</h3>
-                        <p className="text-sm text-base-content/60 dark:text-base-content/50 mt-2">Last 3 Months - Income & Expense Trends</p>
+                <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-8 mb-6 sm:mb-8 rounded-2xl">
+                    <div className="mb-6 sm:mb-8">
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-base-content dark:text-base-content/90">Financial Overview</h3>
+                        <p className="text-xs sm:text-sm text-base-content/60 dark:text-base-content/50 mt-1 sm:mt-2">Last 3 Months - Income & Expense Trends</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Stacked Area Chart */}
@@ -276,10 +276,10 @@ const DashboardPreview = () => {
                 {monthlyData.length > 0 && categoryExpenseData.length > 0 && (
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
                         {/* Expense Breakdown Chart - Left Side (2 columns) */}
-                        <div className="lg:col-span-2 card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-8 rounded-2xl">
-                            <div className="mb-8">
-                                <h3 className="text-2xl font-bold text-base-content dark:text-base-content/90">Expense Breakdown by Category</h3>
-                                <p className="text-sm text-base-content/60 dark:text-base-content/50 mt-2">Last 3 months category trends</p>
+                        <div className="lg:col-span-2 card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-8 rounded-2xl">
+                            <div className="mb-6 sm:mb-8">
+                                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-base-content dark:text-base-content/90">Expense Breakdown by Category</h3>
+                                <p className="text-xs sm:text-sm text-base-content/60 dark:text-base-content/50 mt-1 sm:mt-2">Last 3 months category trends</p>
                             </div>
                             {Object.keys(categoryExpenseData[0] || {}).filter(key => key !== 'month').length > 0 ? (
                                 <>
@@ -373,8 +373,8 @@ const DashboardPreview = () => {
                         </div>
 
                         {/* Transaction Summary Card - Right Side (1 column) */}
-                        <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-8 rounded-2xl">
-                            <h3 className="text-2xl font-bold text-base-content dark:text-base-content/90 mb-6">Transaction Summary</h3>
+                        <div className="card bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 shadow-sm p-4 sm:p-8 rounded-2xl">
+                            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-base-content dark:text-base-content/90 mb-4 sm:mb-6">Transaction Summary</h3>
                             <div className="flex flex-col gap-6">
                                 {[
                                     {

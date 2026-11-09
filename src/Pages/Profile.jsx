@@ -74,17 +74,26 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100 p-2">
-      <div className="bg-base-200 border-2 border-base-300 rounded-lg p-6 w-full max-w-xl">
+      <div className="bg-base-200 border-2 border-base-300 rounded-lg p-4 sm:p-6 w-full max-w-xl">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="avatar">
-              <div className="w-24 h-24 rounded-full ring ring-red-500 ring-offset-base-100 ring-offset-2 overflow-hidden">
-                <img src={user?.photoURL || "/default-avatar.png"} alt="User avatar" />
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full ring ring-red-500 ring-offset-base-100 ring-offset-2 overflow-hidden">
+                <img 
+                  src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}&background=0284c7&color=fff`} 
+                  alt="User avatar" 
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}&background=0284c7&color=fff`;
+                  }}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-base-content">{user?.displayName || "User"}</h2>
-              <p className="text-sm text-base-content/70">{user?.email || "no-email@example.com"}</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-base-content">{user?.displayName || "User"}</h2>
+              <p className="text-xs sm:text-sm text-base-content/70">{user?.email || "no-email@example.com"}</p>
             </div>
           </div>
 

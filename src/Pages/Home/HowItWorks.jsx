@@ -26,18 +26,18 @@ const steps = [
 
 const HowItWorks = () => {
     return (
-        <section className="bg-base-600 px-4 py-20 lg:px-10">
+        <section className="bg-base-600 px-4 py-10 sm:py-20 lg:px-10">
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
-                <div className="mb-14 text-center">
-                    <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-bold">
+                <div className="mb-8 sm:mb-14 text-center">
+                    <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-600 font-bold">
                         How it works
                     </p>
-                    <h2 className="text-4xl lg:text-5xl font-extrabold text-base-content mt-2">
+                    <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2">
                         Up and running in minutes
                     </h2>
-                    <p className="mt-4 text-base-content/70 max-w-xl mx-auto">
+                    <p className="mt-2 sm:mt-4 text-xs sm:text-base text-base-content/70 max-w-xl mx-auto">
                         No learning curve. Three simple steps and your finances are already more organised than yesterday.
                     </p>
                 </div>
@@ -67,14 +67,14 @@ const HowItWorks = () => {
                                 </div>
 
                                 {/* Text */}
-                                <div className="card bg-base-100 border border-base-content/10 shadow-sm p-6 w-full group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
-                                    <p className="text-xs uppercase tracking-widest text-blue-600/70 font-bold mb-2">
+                                <div className="card bg-base-100 border border-base-content/10 shadow-sm p-4 sm:p-6 w-full group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                                    <p className="text-[11px] sm:text-xs uppercase tracking-widest text-blue-600/70 font-bold mb-1 sm:mb-2">
                                         Step {step.number}
                                     </p>
-                                    <h3 className="text-xl font-bold text-base-content mb-3">
+                                    <h3 className="text-lg sm:text-xl font-bold text-base-content mb-2 sm:mb-3">
                                         {step.title}
                                     </h3>
-                                    <p className="text-base-content/70 text-sm leading-relaxed">
+                                    <p className="text-base-content/70 text-xs sm:text-sm leading-relaxed">
                                         {step.description}
                                     </p>
                                 </div>

@@ -156,15 +156,15 @@ const Budgets = () => {
         <div className="min-h-screen bg-base-100 px-4 py-8 lg:px-10">
             <div className="max-w-6xl mx-auto space-y-6">
                 
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
                     <div>
-                        <p className="text-sm uppercase tracking-[0.2em] font-extrabold text-blue-600">
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] font-extrabold text-blue-600">
                             Cashnivo
                         </p>
-                        <h1 className="text-3xl lg:text-4xl font-extrabold text-base-content mt-1">
+                        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-1">
                             Budgets & Goals
                         </h1>
-                        <p className="text-base-content/70 mt-2">
+                        <p className="text-xs sm:text-base text-base-content/70 mt-1.5">
                             Set monthly limits for your expenses and track your progress.
                         </p>
                     </div>
