@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 import FinancialSummary from "./components/FinancialSummary";
 import InsightsActions from "./components/InsightsActions";
 import RecentTransactions from "./components/RecentTransactions";
@@ -10,7 +11,6 @@ const DashboardHome = () => {
     const { user } = useContext(AuthContext);
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
     const [stats, setStats] = useState({
         totalIncome: 0, totalExpense: 0, balance: 0,
         transactionCount: 0, incomeCount: 0, expenseCount: 0
@@ -102,7 +102,9 @@ const DashboardHome = () => {
                         : <span className="flex items-center gap-1 text-green-500"><FaChartLine /> <span className="text-base-content dark:text-base-content/90">Keep improving</span></span>
                 });
             } catch (err) {
-                if (!axios.isCancel(err)) setError('Failed to load data.');
+                if (!axios.isCancel(err)) {
+                    toast.error('Unable to sync financial data from server.');
+                }
             } finally {
                 setLoading(false);
             }
@@ -152,8 +154,6 @@ const DashboardHome = () => {
                         Welcome back, <span className="font-semibold text-base-content dark:text-base-content/90">{user?.displayName || 'User'}</span>!
                     </p>
                 </div>
-
-                {error && <div className="alert alert-error text-sm"><span>{error}</span></div>}
 
                 <FinancialSummary stats={stats} monthlyData={monthlyData} categoryData={categoryData} fmt={fmt} transactions={transactions} />
 

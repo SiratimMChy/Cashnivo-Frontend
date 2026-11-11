@@ -31,7 +31,7 @@ const Transactions = () => {
                 setCategories(Array.isArray(catRes.data) ? catRes.data : []);
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 toast.error('Failed to load data.');
             })
             .finally(() => setLoading(false));
@@ -63,7 +63,7 @@ const Transactions = () => {
                         toast.success('Transaction deleted.');
                     })
                     .catch(err => {
-                        console.error(err);
+                        // console.error(err);
                         toast.error('Failed to delete transaction.');
                     })
                     .finally(() => setDeletingId(null));
@@ -110,7 +110,7 @@ const Transactions = () => {
                 setEditingTx(null);
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 toast.error('Failed to update transaction.');
             })
             .finally(() => setSaving(false));
@@ -265,14 +265,14 @@ const Transactions = () => {
                                             <div className="flex justify-end gap-1 mt-1">
                                                 <button
                                                     onClick={() => handleEditOpen(t)}
-                                                    className="p-1 text-base-content/30 dark:text-base-content/40 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-md transition-colors"
+                                                    className="p-1 text-base-content/30 dark:text-base-content/40 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors"
                                                 >
                                                     <Pencil size={12} />
                                                 </button>
                                                 <button
                                                     onClick={() => handleDelete(t._id)}
                                                     disabled={deletingId === t._id}
-                                                    className="p-1 text-base-content/30 dark:text-base-content/40 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors disabled:opacity-40"
+                                                    className="p-1 text-base-content/30 dark:text-base-content/40 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-40"
                                                 >
                                                     {deletingId === t._id
                                                         ? <span className="loading loading-spinner loading-xs"></span>
@@ -294,7 +294,7 @@ const Transactions = () => {
                         <button
                             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                             disabled={currentPage === 1}
-                            className="btn btn-sm btn-outline disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="btn btn-sm btn-outline rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Previous
                         </button>
@@ -304,7 +304,7 @@ const Transactions = () => {
                                 <button
                                     key={page}
                                     onClick={() => setCurrentPage(page)}
-                                    className={`btn btn-sm ${currentPage === page
+                                    className={`btn btn-sm rounded-lg ${currentPage === page
                                         ? 'bg-linear-to-r from-blue-600 to-cyan-600 text-white border-none'
                                         : 'btn-outline'
                                         }`}
@@ -317,7 +317,7 @@ const Transactions = () => {
                         <button
                             onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                             disabled={currentPage === totalPages}
-                            className="btn btn-sm btn-outline disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="btn btn-sm btn-outline rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Next
                         </button>
@@ -425,14 +425,14 @@ const Transactions = () => {
                             <div className="flex gap-3 pt-2">
                                 <button
                                     onClick={() => document.getElementById('edit_modal').close()}
-                                    className="btn btn-outline flex-1"
+                                    className="btn btn-outline flex-1 rounded-lg"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleEditSave}
                                     disabled={saving}
-                                    className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white border-none flex-1"
+                                    className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white border-none flex-1 rounded-lg"
                                 >
                                     {saving
                                         ? <span className="loading loading-spinner loading-sm"></span>

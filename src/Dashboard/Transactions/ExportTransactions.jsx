@@ -68,14 +68,14 @@ const ExportTransactions = ({ transactions, filter }) => {
         <div className="flex items-center gap-1 bg-base-200 dark:bg-base-200/50 border border-base-content/10 dark:border-base-content/20 rounded-xl px-2 py-1.5">
             <button 
                 onClick={generatePDF}
-                className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-base-content/70 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors"
+                className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-base-content/70 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors"
             >
                 <FileText size={15} />
                 <span>PDF</span>
             </button>
             <button 
                 onClick={generateExcel}
-                className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-base-content/70 hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10 rounded-md transition-colors"
+                className="flex items-center gap-1 px-2 py-1 text-sm font-medium text-base-content/70 hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10 rounded-lg transition-colors"
             >
                 <FileSpreadsheet size={15} />
                 <span>Excel</span>

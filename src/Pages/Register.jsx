@@ -65,10 +65,10 @@ const Register = () => {
                     }).then(() => {
                         axios.post('https://cashnivo.vercel.app/users', formData)
                             .then(res => {
-                                console.log(res.data);
+                                // console.log(res.data);
                             })
                             .catch(err => {
-                                console.error(err);
+                                // console.error(err);
                             });
                         
                         // Sign out the user after registration
@@ -76,10 +76,10 @@ const Register = () => {
                             toast.success('Registration successful! Please login.');
                             navigate('/login');
                         }).catch((error) => {
-                            console.log(error);
+                            // console.log(error);
                         });
                     }).catch((error) => {
-                        console.log(error);
+                        // console.log(error);
                     });
                 })
                 .catch(() => {
@@ -110,7 +110,7 @@ const Register = () => {
 
             navigate('/');
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             toast.error(error.message);
         }
     };

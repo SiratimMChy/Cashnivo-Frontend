@@ -24,7 +24,8 @@ const AiChatbot = () => {
                     .then(res => {
                         setTransactions(Array.isArray(res.data) ? res.data : []);
                     })
-                    .catch(err => console.error("Failed to fetch transactions for AI", err));
+                    // .catch(err => console.error("Failed to fetch transactions for AI", err));
+                    .catch(() => {});
             }
 
             // Fetch chat history from DB
@@ -35,7 +36,8 @@ const AiChatbot = () => {
                             setMessages(res.data);
                         }
                     })
-                    .catch(err => console.error("Failed to fetch chat history", err));
+                    // .catch(err => console.error("Failed to fetch chat history", err));
+                    .catch(() => {});
             }
         }
     }, [isOpen, user?.email]);
@@ -50,7 +52,8 @@ const AiChatbot = () => {
 
         if (user?.email) {
             axios.delete(`https://cashnivo.vercel.app/chats?email=${encodeURIComponent(user.email)}`)
-                .catch(err => console.error("Failed to clear chat history", err));
+                // .catch(err => console.error("Failed to clear chat history", err));
+                .catch(() => {});
         }
     };
 
@@ -66,7 +69,8 @@ const AiChatbot = () => {
 
         // Sync user message to DB
         axios.post(`https://cashnivo.vercel.app/chats`, { email: user.email, messages: newMessagesUser })
-            .catch(err => console.error("Failed to sync user message", err));
+            // .catch(err => console.error("Failed to sync user message", err));
+            .catch(() => {});
 
         try {
             // Format transaction context
@@ -139,10 +143,11 @@ Response style:
             setMessages(newMessagesBot);
 
             axios.post(`https://cashnivo.vercel.app/chats`, { email: user.email, messages: newMessagesBot })
-                .catch(err => console.error("Failed to sync bot message", err));
+                // .catch(err => console.error("Failed to sync bot message", err));
+                .catch(() => {});
 
         } catch (error) {
-            console.error("AI Chatbot Error:", error);
+            // console.error("AI Chatbot Error:", error);
             setMessages(prev => [...prev, { role: 'model', content: "Sorry, I encountered an error. Please make sure you have added your VITE_GROQ_API_KEY in your .env.local file." }]);
         } finally {
             setIsLoading(false);
@@ -216,7 +221,7 @@ Response style:
                             <button
                                 onClick={handleSend}
                                 disabled={isLoading || !input.trim()}
-                                className="btn btn-square bg-blue-600 hover:bg-blue-700 text-white border-none transition-colors"
+                                className="btn btn-square bg-blue-600 hover:bg-blue-700 text-white border-none transition-colors rounded-lg"
                             >
                                 <Send size={18} />
                             </button>

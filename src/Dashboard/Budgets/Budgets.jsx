@@ -34,7 +34,7 @@ const Budgets = () => {
                 setLoading(false);
             })
             .catch(error => {
-                console.error("Error fetching data:", error);
+                // console.error("Error fetching data:", error);
                 toast.error("Failed to load budgets data.");
                 setLoading(false);
             });
@@ -75,7 +75,7 @@ const Budgets = () => {
             setIsModalOpen(false);
             fetchData();
         } catch (error) {
-            console.error(error);
+            // console.error(error);
             toast.error('Failed to save budget.');
         }
     };
@@ -130,13 +130,7 @@ const Budgets = () => {
         if (overBudgetCategories.length > 0) {
             const warned = sessionStorage.getItem('budgetWarningShowed');
             if (!warned) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Limit Exceeded!',
-                    html: `You have exceeded your budget for: <b>${overBudgetCategories.join(', ')}</b>`,
-                    confirmButtonColor: '#ef4444',
-                    confirmButtonText: 'Understood'
-                });
+                toast.warning(`Limit Exceeded: You have exceeded your budget for ${overBudgetCategories.join(', ')}`);
                 sessionStorage.setItem('budgetWarningShowed', 'true');
             }
         }
@@ -170,7 +164,7 @@ const Budgets = () => {
                     </div>
                     <button 
                         onClick={() => handleOpenModal()} 
-                        className="btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none shadow-md"
+                        className="btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none shadow-md rounded-lg"
                     >
                         <Plus size={18} /> Add Budget
                     </button>
@@ -183,7 +177,7 @@ const Budgets = () => {
                         <p className="text-base-content/60 mb-6">Start saving by setting a limit on your monthly expenses.</p>
                         <button 
                             onClick={() => handleOpenModal()} 
-                            className="btn btn-outline border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                            className="btn btn-outline border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 rounded-lg"
                         >
                             Create First Budget
                         </button>
@@ -207,10 +201,10 @@ const Budgets = () => {
                                             <p className="text-sm text-base-content/60 mt-1">Monthly Limit</p>
                                         </div>
                                         <div className="flex gap-2">
-                                            <button onClick={() => handleOpenModal(budget)} className="btn btn-sm btn-ghost btn-square text-base-content/60 hover:text-blue-500">
+                                            <button onClick={() => handleOpenModal(budget)} className="btn btn-sm btn-ghost btn-square text-base-content/60 hover:text-blue-500 rounded-lg">
                                                 <Edit2 size={16} />
                                             </button>
-                                            <button onClick={() => handleDelete(budget._id)} className="btn btn-sm btn-ghost btn-square text-base-content/60 hover:text-error">
+                                            <button onClick={() => handleDelete(budget._id)} className="btn btn-sm btn-ghost btn-square text-base-content/60 hover:text-error rounded-lg">
                                                 <Trash2 size={16} />
                                             </button>
                                         </div>
@@ -290,13 +284,13 @@ const Budgets = () => {
                                     <button 
                                         type="button" 
                                         onClick={() => setIsModalOpen(false)} 
-                                        className="btn btn-outline flex-1 border-base-content/20 text-base-content/70 hover:bg-base-content/10 hover:text-base-content"
+                                        className="btn btn-outline flex-1 border-base-content/20 text-base-content/70 hover:bg-base-content/10 hover:text-base-content rounded-lg"
                                     >
                                         Cancel
                                     </button>
                                     <button 
                                         type="submit" 
-                                        className="btn flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none shadow-md"
+                                        className="btn flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none shadow-md rounded-lg"
                                     >
                                         {editingId ? 'Update' : 'Save'} Budget
                                     </button>

@@ -108,7 +108,7 @@ const DashboardPreview = () => {
                 });
                 setCategoryExpenseData(categoryChartData);
             } catch (err) {
-                console.error(err);
+                // console.error(err);
             } finally {
                 setLoading(false);
             }
@@ -419,7 +419,7 @@ const DashboardPreview = () => {
                 <div className="text-center">
                     <Link
                         to="/dashboard/dashboardhome"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        className="btn bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 px-8 py-3 h-auto"
                     >
                         <span>View Full Dashboard</span>
                         <ArrowUpRight size={18} />

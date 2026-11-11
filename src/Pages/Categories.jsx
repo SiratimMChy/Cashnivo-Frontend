@@ -31,7 +31,7 @@ const Categories = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 setLoading(false);
             });
 
@@ -83,7 +83,7 @@ const Categories = () => {
                 setCategoryName('');
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 toast.error('Failed to add category');
             });
     };
@@ -107,7 +107,7 @@ const Categories = () => {
                 setEditName('');
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 toast.error('Failed to update category');
             });
     };
@@ -124,7 +124,7 @@ const Categories = () => {
                 toast.success('Category deleted successfully!');
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 toast.error('Failed to delete category');
             });
     };
@@ -167,7 +167,7 @@ const Categories = () => {
                 <div className="flex gap-2 mb-6">
                     <button
                         onClick={() => handleTabSwitch('expense')}
-                        className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${activeTab === 'expense'
+                        className={`px-5 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 ${activeTab === 'expense'
                             ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-transparent shadow'
                             : 'bg-base-200 text-base-content/70 border-base-content/10 hover:border-blue-400'
                             }`}
@@ -176,7 +176,7 @@ const Categories = () => {
                     </button>
                     <button
                         onClick={() => handleTabSwitch('income')}
-                        className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${activeTab === 'income'
+                        className={`px-5 py-2 rounded-lg text-sm font-semibold border transition-all duration-200 ${activeTab === 'income'
                             ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-transparent shadow'
                             : 'bg-base-200 text-base-content/70 border-base-content/10 hover:border-blue-400'
                             }`}
@@ -204,7 +204,7 @@ const Categories = () => {
                             <button
                                 type="submit"
                                 disabled={!user}
-                                className={`btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none hover:scale-[1.01] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ${!user ? 'opacity-60 cursor-not-allowed' : ''}`}
+                                className={`btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none hover:scale-[1.01] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 rounded-lg ${!user ? 'opacity-60 cursor-not-allowed' : ''}`}
                             >
                                 Add Category
                             </button>
@@ -282,13 +282,13 @@ const Categories = () => {
                                                     />
                                                     <button
                                                         onClick={() => handleSaveEdit(item._id)}
-                                                        className="btn btn-sm bg-green-600 border-none hover:bg-green-800 text-white"
+                                                        className="btn btn-sm bg-green-600 border-none hover:bg-green-700 text-white rounded-lg"
                                                     >
                                                         Save
                                                     </button>
                                                     <button
                                                         onClick={handleCancelEdit}
-                                                        className="btn btn-sm bg-red-600 border-none hover:bg-red-800 text-white"
+                                                        className="btn btn-sm bg-red-600 border-none hover:bg-red-700 text-white rounded-lg"
                                                     >
                                                         Cancel
                                                     </button>
@@ -300,16 +300,16 @@ const Categories = () => {
                                                         <button
                                                             type="button"
                                                             onClick={() => handleEditCategory(item)}
-                                                            className="btn btn-sm bg-blue-600 text-black hover:bg-blue-50"
+                                                            className="btn btn-sm bg-blue-600 border-none text-white hover:bg-blue-700 rounded-lg"
                                                         >
-                                                            <FaRegEdit className="h-5 w-5" />
+                                                            <FaRegEdit className="h-4 w-4" />
                                                         </button>
                                                         <button
                                                             type="button"
                                                             onClick={() => handleRemoveCategory(item)}
-                                                            className="btn btn-sm bg-red-500 text-black-600 hover:bg-red-50"
+                                                            className="btn btn-sm bg-red-500 border-none text-white hover:bg-red-600 rounded-lg"
                                                         >
-                                                            <FiTrash2 className="h-5 w-5" />
+                                                            <FiTrash2 className="h-4 w-4" />
                                                         </button>
                                                     </div>
                                                 </>

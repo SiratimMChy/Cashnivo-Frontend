@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
                 setRole(res.data.role);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             });
     }, [user]);
 

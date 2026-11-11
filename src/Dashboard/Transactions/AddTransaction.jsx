@@ -4,7 +4,6 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Save } from 'lucide-react';
-import Swal from 'sweetalert2';
 
 const AddTransaction = () => {
     const { user } = useContext(AuthContext);
@@ -48,7 +47,7 @@ const AddTransaction = () => {
                 })
                 .catch(err => {
                     if (!active) return;
-                    console.error(err);
+                    // console.error(err);
                     toast.error('Unable to load data.');
                     setLoadingCategories(false);
                 });
@@ -104,13 +103,7 @@ const AddTransaction = () => {
                 const spent = currentMonthTx.reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
                 
                 if (spent + amount > budget.amount) {
-                    await Swal.fire({
-                        icon: 'warning',
-                        title: 'Budget Exceeded!',
-                        text: `Your fixed budget for ${formData.category} has been exceeded.`,
-                        confirmButtonColor: '#f59e0b',
-                        confirmButtonText: 'Okay'
-                    });
+                    toast.warning(`Budget Exceeded: Your fixed budget for ${formData.category} has been exceeded.`);
                 }
             }
         }
@@ -127,7 +120,7 @@ const AddTransaction = () => {
             toast.success('Transaction saved successfully!');
             navigate("/dashboard/dashboardhome");
         } catch (err) {
-            console.error(err);
+            // console.error(err);
             toast.error('Unable to save transaction.');
         }
     };
@@ -142,7 +135,7 @@ const AddTransaction = () => {
                     </p>
                     <Link
                         to="/login"
-                        className="btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none"
+                        className="btn bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none rounded-lg"
                     >
                         Go to Login
                     </Link>
@@ -174,11 +167,11 @@ const AddTransaction = () => {
                             <label className="block text-sm font-medium text-base-content/70 mb-3">
                                 Transaction Type
                             </label>
-                            <div className="flex rounded-2xl border border-base-300 bg-base-100 p-1">
+                            <div className="flex rounded-xl border border-base-300 bg-base-100 p-1">
                                 <button
                                     type="button"
                                     onClick={() => handleTypeChange('expense')}
-                                    className={`flex-1 py-3 text-sm font-semibold rounded-xl transition ${
+                                    className={`flex-1 py-3 text-sm font-semibold rounded-lg transition ${
                                         formData.type === 'expense'
                                             ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm'
                                             : 'text-base-content/70 hover:text-base-content'
@@ -189,7 +182,7 @@ const AddTransaction = () => {
                                 <button
                                     type="button"
                                     onClick={() => handleTypeChange('income')}
-                                    className={`flex-1 py-3 text-sm font-semibold rounded-xl transition ${
+                                    className={`flex-1 py-3 text-sm font-semibold rounded-lg transition ${
                                         formData.type === 'income'
                                             ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm'
                                             : 'text-base-content/70 hover:text-base-content'
@@ -268,13 +261,13 @@ const AddTransaction = () => {
                         <div className="pt-4 border-t border-base-300/50 flex flex-col gap-3 sm:flex-row sm:justify-end">
                             <Link
                                 to="/dashboard/dashboardhome"
-                                className="btn btn-outline w-full sm:w-auto"
+                                className="btn btn-outline w-full sm:w-auto rounded-lg"
                             >
                                 Cancel
                             </Link>
                             <button
                                 type="submit"
-                                className="btn w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none"
+                                className="btn w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-none rounded-lg"
                             >
                                 <Save size={16} className="mr-2" />
                                 Save Transaction

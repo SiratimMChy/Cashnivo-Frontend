@@ -44,28 +44,28 @@ const InsightsActions = ({ insights, monthlyData, fmt }) => {
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <Link
                         to="/dashboard/add-transaction"
-                        className="flex items-center justify-center gap-2 p-3 rounded-xl bg-linear-to-r from-blue-600 to-cyan-600 text-white text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity"
+                        className="flex items-center justify-center gap-2 p-3 rounded-lg bg-linear-to-r from-blue-600 to-cyan-600 text-white text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity"
                     >
                         <TrendingUp size={16} />
                         <span>Add Income</span>
                     </Link>
                     <Link
                         to="/dashboard/add-transaction"
-                        className="flex items-center justify-center gap-2 p-3 rounded-xl bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
+                        className="flex items-center justify-center gap-2 p-3 rounded-lg bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
                     >
                         <TrendingDown size={16} />
                         <span>Add Expense</span>
                     </Link>
                     <Link
                         to="/dashboard/transactions"
-                        className="flex items-center justify-center gap-2 p-3 rounded-xl bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
+                        className="flex items-center justify-center gap-2 p-3 rounded-lg bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
                     >
                         <Zap size={16} />
                         <span>All Transactions</span>
                     </Link>
                     <Link
                         to="/dashboard/categories"
-                        className="flex items-center justify-center gap-2 p-3 rounded-xl bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
+                        className="flex items-center justify-center gap-2 p-3 rounded-lg bg-base-100 dark:bg-base-100/50 border border-base-content/10 dark:border-base-content/20 text-base-content dark:text-base-content/90 text-xs sm:text-sm font-semibold hover:border-blue-400 dark:hover:border-blue-400 transition-colors"
                     >
                         <Target size={16} />
                         <span>Categories</span>

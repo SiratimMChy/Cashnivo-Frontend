@@ -25,7 +25,8 @@ const Hero = () => {
                     { label: 'Custom Categories', value: formatNum(categories) },
                 ]);
             })
-            .catch(err => console.error(err));
+            // .catch(err => console.error(err));
+            .catch(() => {});
     }, []);
 
     return (

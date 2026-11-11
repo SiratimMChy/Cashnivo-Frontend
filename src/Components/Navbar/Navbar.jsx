@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../../assets/logo.png';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Provider/AuthProvider';
 import auth from '../../firebase/firebase.config';
 import { signOut } from 'firebase/auth';
@@ -34,10 +34,7 @@ const Navbar = () => {
     const handleSignOut = () => {
         signOut(auth);
         navigate("/login");
-        Swal.fire({
-            title: "Successfully Logged Out",
-            icon: "success"
-        });
+        toast.success("Successfully logged out!");
     }
 
     const navLinkClass = ({ isActive }) => {

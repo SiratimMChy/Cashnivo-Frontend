@@ -65,7 +65,7 @@ const Profile = () => {
       setEditing(false);
       setPhotoFile(null);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toast.error("Unable to update profile.");
     } finally {
       setSaving(false);
@@ -139,14 +139,14 @@ const Profile = () => {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white w-full sm:w-auto border-none"
+                  className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white w-full sm:w-auto border-none rounded-lg"
                 >
                   {saving ? "Saving..." : "Save"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setEditing(false)}
-                  className="btn btn-outline w-full sm:w-auto"
+                  className="btn btn-outline w-full sm:w-auto rounded-lg"
                 >
                   Cancel
                 </button>
@@ -155,7 +155,7 @@ const Profile = () => {
           ) : (
             <button
               onClick={() => setEditing(true)}
-              className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white w-full border-none"
+              className="btn bg-linear-to-r from-blue-600 to-cyan-600 text-white w-full border-none rounded-lg"
             >
               Edit Profile
             </button>

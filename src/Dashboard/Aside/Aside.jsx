@@ -32,14 +32,7 @@ const Aside = () => {
     
     const desktopSidebar = (
         <aside className={`hidden md:flex h-screen sticky top-0 ${isOpen ? 'w-56' : 'w-20'} bg-base-100 border-r border-base-content/10 flex-col shadow-lg transition-all duration-300 z-50 shrink-0`}>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className={`absolute top-4 ${isOpen ? 'right-4' : 'left-1/2 -translate-x-1/2'} bg-base-100 border border-base-content/10 rounded-full p-1.5 shadow-md hover:border-blue-300 transition-all duration-200 z-20`}
-            >
-                {isOpen ? <ChevronLeft size={16} className="text-base-content/60" /> : <ChevronRight size={16} className="text-base-content/60" />}
-            </button>
-
-            <div className="px-4 pt-12 pb-5 border-b border-base-content/10 bg-base-100 shrink-0">
+            <div className="relative px-4 py-5 border-b border-base-content/10 bg-base-100 shrink-0">
                 <Link to="/" className={`flex items-center gap-2 hover:opacity-90 transition-opacity ${!isOpen ? 'justify-center' : ''}`}>
                     <img src={logo} alt="Logo" className="w-10 h-10 shrink-0" />
                     {isOpen && (
@@ -48,6 +41,14 @@ const Aside = () => {
                         </span>
                     )}
                 </Link>
+
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="absolute -right-3.5 top-full -translate-y-1/2 bg-base-100 border border-base-content/20 rounded-full w-7 h-7 flex items-center justify-center shadow-md hover:border-blue-400 hover:text-blue-600 hover:scale-110 transition-all duration-200 z-30 cursor-pointer text-base-content"
+                    title={isOpen ? "Collapse sidebar" : "Expand sidebar"}
+                >
+                    {isOpen ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+                </button>
             </div>
 
             <nav className="flex-1 flex flex-col gap-1 px-2 py-4 overflow-y-auto">
