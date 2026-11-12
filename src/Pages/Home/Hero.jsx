@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { TrendingUp, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
@@ -38,14 +38,10 @@ const Hero = () => {
             </div>
 
             <div className="relative max-w-7xl mx-auto w-full">
-                <div className="flex justify-center mb-4 sm:mb-6">
-                    <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-2xl bg-base-200 border border-base-content/10 shadow-sm text-xs sm:text-sm font-semibold text-blue-600">
-                        <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        Simple & Secure Finance Tracking
-                    </span>
-                </div>
-
                 <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-6">
+                    <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-600 font-bold mb-3 sm:mb-4">
+                        Smart Finance Tracking
+                    </p>
                     <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-base-content leading-tight tracking-tight">
                         Streamline Your{' '}
                         <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">

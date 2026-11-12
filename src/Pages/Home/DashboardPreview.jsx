@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
-import { TrendingUp, TrendingDown, Wallet, Target, ArrowUpRight, Zap } from 'lucide-react';
+import { TrendingUp, TrendingDown, Wallet, Target, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, BarChart, Bar, AreaChart, Area } from 'recharts';
 
@@ -132,10 +132,9 @@ const DashboardPreview = () => {
                 </div>
                 <div className="relative max-w-7xl mx-auto">
                     <div className="text-center mb-8 sm:mb-16">
-                        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-base-200 border border-base-content/10 mb-2 sm:mb-4">
-                            <Zap size={14} className="text-blue-600 sm:w-4 sm:h-4" />
-                            <span className="text-[11px] sm:text-xs font-semibold text-base-content/60">Your Dashboard</span>
-                        </div>
+                        <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-600 font-bold">
+                            Dashboard Preview
+                        </p>
                         <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2 sm:mt-4">Financial Snapshot</h2>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-pulse mb-8">
@@ -164,10 +163,9 @@ const DashboardPreview = () => {
             <div className="relative max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-8 sm:mb-16">
-                    <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-base-200 border border-base-content/10 mb-2 sm:mb-4">
-                        <Zap size={14} className="text-blue-600 sm:w-4 sm:h-4" />
-                        <span className="text-[11px] sm:text-xs font-semibold text-base-content/60">Your Dashboard</span>
-                    </div>
+                    <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.25em] text-blue-600 font-bold">
+                        Dashboard Preview
+                    </p>
                     <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-base-content mt-2 sm:mt-4">Financial Snapshot</h2>
                     <p className="mt-2 sm:mt-4 text-xs sm:text-base text-base-content/60 max-w-2xl mx-auto">
                         Real-time overview of your finances
